@@ -16,8 +16,8 @@ import com.google.firebase.firestore.ktx.toObject
 /**
  * RecyclerView adapter for a list of Restaurants.
  */
-open class RestaurantRecyclerViewAdapter(query: Query, private val listener: OnRestaurantSelectedListener) :
-        FirestoreRecyclerViewAdapter<RestaurantRecyclerViewAdapter.ViewHolder>(query) {
+open class RestaurantListAdapter(query: Query, private val listener: OnRestaurantSelectedListener) :
+        FirestoreRecyclerViewAdapter<RestaurantListAdapter.ViewHolder>(query) {
 
     interface OnRestaurantSelectedListener {
 

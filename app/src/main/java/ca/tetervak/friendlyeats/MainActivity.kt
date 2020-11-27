@@ -52,7 +52,7 @@ class MainActivity : FirestoreActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_about -> {
-                navController.navigate(R.id.action_global_about_dialog)
+                navController.navigate(MainActivityDirections.actionGlobalAboutDialog())
                 true
             }
             else -> super.onOptionsItemSelected(item)

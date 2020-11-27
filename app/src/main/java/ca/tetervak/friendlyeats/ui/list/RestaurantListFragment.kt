@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.friendlyeats.R
 import ca.tetervak.friendlyeats.databinding.RestaurantListFragmentBinding
@@ -20,7 +22,7 @@ import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RestaurantListFragment : Fragment(), RestaurantRecyclerViewAdapter.OnRestaurantSelectedListener {
+class RestaurantListFragment : Fragment(), RestaurantListAdapter.OnRestaurantSelectedListener {
 
     companion object{
         private const val LIMIT = 50
@@ -31,7 +33,8 @@ class RestaurantListFragment : Fragment(), RestaurantRecyclerViewAdapter.OnResta
     lateinit var query: Query
 
     private lateinit var binding: RestaurantListFragmentBinding
-    lateinit var adapter: RestaurantRecyclerViewAdapter
+    lateinit var adapter: RestaurantListAdapter
+    lateinit var navController: NavController
 
     private val viewModel: RestaurantListViewModel by viewModels()
 
@@ -52,11 +55,12 @@ class RestaurantListFragment : Fragment(), RestaurantRecyclerViewAdapter.OnResta
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = RestaurantListFragmentBinding.inflate(inflater, container, false)
 
+        navController = findNavController()
+
         // RecyclerView
-        adapter = object : RestaurantRecyclerViewAdapter(query, this@RestaurantListFragment) {
+        adapter = object : RestaurantListAdapter(query, this@RestaurantListFragment) {
             override fun onDataChanged() {
                 // Show/hide content if the query returns empty.
                 if (itemCount == 0) {
@@ -111,16 +115,10 @@ class RestaurantListFragment : Fragment(), RestaurantRecyclerViewAdapter.OnResta
         }
     }
 
-    private fun notImplemented() {
-        Snackbar.make(
-            binding.root,
-            getString(R.string.not_implemented),
-            Snackbar.LENGTH_LONG
-        ).show()
-    }
-
     override fun onRestaurantSelected(restaurant: DocumentSnapshot) {
-        notImplemented()
+        val action =
+            RestaurantListFragmentDirections.actionRestaurantListToDetail(restaurant.id)
+        navController.navigate(action)
     }
 
     private fun loadRandomData() {
@@ -152,6 +150,11 @@ class RestaurantListFragment : Fragment(), RestaurantRecyclerViewAdapter.OnResta
         }
     }
 
-
-
+    private fun notImplemented() {
+        Snackbar.make(
+            binding.root,
+            getString(R.string.not_implemented),
+            Snackbar.LENGTH_LONG
+        ).show()
+    }
 }

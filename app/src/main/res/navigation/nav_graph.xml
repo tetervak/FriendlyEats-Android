@@ -17,10 +17,27 @@
         android:id="@+id/restaurantDetailFragment"
         android:name="ca.tetervak.friendlyeats.ui.detail.RestaurantDetailFragment"
         android:label="@string/restaurant_details"
-        tools:layout="@layout/restaurant_detail_fragment" />
+        tools:layout="@layout/restaurant_detail_fragment" >
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detail_to_rating_dialog"
+            app:destination="@id/ratingDialogFragment" />
+    </fragment>
     <dialog
         android:id="@+id/aboutDialogFragment"
         android:name="ca.tetervak.friendlyeats.ui.dialogs.AboutDialogFragment"
         android:label="AboutDialogFragment" />
     <action android:id="@+id/action_global_about_dialog" app:destination="@id/aboutDialogFragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="ca.tetervak.friendlyeats.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <dialog
+        android:id="@+id/ratingDialogFragment"
+        android:name="ca.tetervak.friendlyeats.ui.dialogs.RatingDialogFragment"
+        android:label="RatingDialogFragment"
+        tools:layout="@layout/rating_dialog_fragment"/>
 </navigation>

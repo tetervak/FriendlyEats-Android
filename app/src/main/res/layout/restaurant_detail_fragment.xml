@@ -120,18 +120,20 @@
             android:id="@+id/recyclerRatings"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@android:color/transparent"
-            android:visibility="visible"
+            android:paddingTop="24dp"
+            app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
-            tools:listitem="@layout/rating_list_item" />
+            tools:listitem="@layout/rating_list_item"
+            tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/viewEmptyRatings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:constraint_referenced_ids="imageView,textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -145,7 +147,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            android:contentDescription="@string/pizza_guy" />
 
         <TextView
             android:id="@+id/textView"

@@ -14,7 +14,7 @@ import java.util.Locale
 /**
  * RecyclerView adapter for a list of [Rating].
  */
-open class RatingRecyclerViewAdapter(query: Query) : FirestoreRecyclerViewAdapter<RatingRecyclerViewAdapter.ViewHolder>(query) {
+open class RatingListAdapter(query: Query) : FirestoreRecyclerViewAdapter<RatingListAdapter.ViewHolder>(query) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(RatingListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
