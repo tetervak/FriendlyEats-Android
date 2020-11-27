@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:alpha="1.0"
+            android:contentDescription="@string/food_picture"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +53,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/restaurantCategory"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:rating="4" />
 
         <TextView
             android:id="@+id/restaurantNumRatings"
@@ -114,26 +116,60 @@
 
 
         <!-- Ratings -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabShowRatingDialog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/restaurantImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
-            app:srcCompat="@drawable/ic_add_white_24px" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerRatings"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@android:color/transparent"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
             tools:listitem="@layout/rating_list_item" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/viewEmptyRatings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="imageView,textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/Theme.FriendlyEats.PizzaGuy"
+            android:src="@drawable/pizza_monster"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Theme.FriendlyEats.Body1"
+            android:layout_width="189dp"
+            android:layout_height="11dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/message_no_reviews"
+            android:textColor="@color/greyDisabled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabShowRatingDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/add_review"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
+            app:srcCompat="@drawable/ic_add_white_24px" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

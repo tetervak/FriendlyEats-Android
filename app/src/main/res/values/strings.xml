@@ -64,5 +64,6 @@
     <string name="food_picture">food picture</string>
     <string name="not_implemented">This feature is not implemented yet.</string>
     <string name="pizza_guy">pizza guy</string>
+    <string name="add_review">add review</string>
 
 </resources>

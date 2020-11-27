@@ -43,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@+id/restaurantItemName"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantItemName" />
+            app:layout_constraintTop_toBottomOf="@+id/restaurantItemName"
+            tools:rating="4"/>
 
         <TextView
             android:id="@+id/restaurantItemNumRatings"
