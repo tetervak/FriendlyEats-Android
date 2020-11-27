@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.RestaurantDetailFragment">
+
+        <ImageView
+            android:id="@+id/restaurantImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:alpha="1.0"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/food_1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/gradient_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/restaurantName"
+            style="@style/Theme.FriendlyEats.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/restaurantRating"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Some Restaurant" />
+
+        <RatingBar
+            android:id="@+id/restaurantRating"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/restaurantCategory"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/restaurantNumRatings"
+            style="@style/Theme.FriendlyEats.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantRating"
+            app:layout_constraintStart_toEndOf="@+id/restaurantRating"
+            app:layout_constraintTop_toTopOf="@+id/restaurantRating"
+            tools:text="(10)" />
+
+        <TextView
+            android:id="@+id/restaurantCategory"
+            style="@style/Theme.FriendlyEats.Subheader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantImage"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Italian" />
+
+        <TextView
+            android:id="@+id/restaurantCity_divider"
+            style="@style/Theme.FriendlyEats.TextDivider"
+            android:layout_marginStart="8dp"
+            android:text="@string/divider_bullet"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantCategory"
+            app:layout_constraintStart_toEndOf="@+id/restaurantCategory"
+            app:layout_constraintTop_toTopOf="@+id/restaurantCategory" />
+
+        <TextView
+            android:id="@+id/restaurantCity"
+            style="@style/Theme.FriendlyEats.Subheader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBaseline_toBaselineOf="@+id/restaurantCategory"
+            app:layout_constraintStart_toEndOf="@+id/restaurantCity_divider"
+            tools:text="San Francisco" />
+
+        <TextView
+            android:id="@+id/restaurantPrice"
+            style="@style/Theme.FriendlyEats.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/restaurantName"
+            tools:text="$$$" />
+
+
+        <!-- Ratings -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabShowRatingDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/restaurantImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
+            app:srcCompat="@drawable/ic_add_white_24px" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRatings"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
+            tools:listitem="@layout/rating_list_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

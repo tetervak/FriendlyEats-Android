@@ -1,12 +1,68 @@
 <resources>
-    <string name="app_name">FriendlyEats</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">Friendly Eats</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- menu items -->
+    <string name="action_about">About</string>
+    <string name="action_load_random_data">Load Random Data</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="action_find_restaurant">Find Restaurant</string>
+
+    <!-- about dialog -->
+    <string name="about">About</string>
+    <string name="author">Alex Tetervak, Sheridan College, 2020</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="restaurant_details">Restaurant Details</string>
+    <string name="restaurant_list">Restaurant List</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- copy-paste from the original code -->
+    <string name="value_any_category">All food</string>
+    <string name="value_any_city">Anywhere</string>
+    <string name="value_any_price">Any price</string>
+
+    <string name="price_1">$</string>
+    <string name="price_2">$$</string>
+    <string name="price_3">$$$</string>
+
+    <string name="label_category">Category</string>
+    <string name="label_city">City</string>
+    <string name="label_price">Price</string>
+    <string name="label_sort_by">Sort By</string>
+
+    <string name="fmt_num_ratings" translatable="false">(%d)</string>
+    <string name="all_restaurants">All Restaurants</string>
+    <string name="header_filters">Filter</string>
+    <string name="search">Search</string>
+
+    <string name="sort_by_rating">Sort by Rating</string>
+    <string name="sort_by_popularity">Sort by Popularity</string>
+    <string name="sort_by_price">Sort by Price</string>
+
+    <string name="sorted_by_rating">sorted by rating</string>
+    <string name="sorted_by_price">sorted by price</string>
+    <string name="sorted_by_popularity">sorted by popularity</string>
+
+    <string name="add_random_items">Add Random Items</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="divider_bullet">•</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="message_no_results">Oops, couldn\'t find any results\nthat matched your filter</string>
+    <string name="message_no_reviews">Be the first to leave a review!</string>
+    <string name="hint_review">How was your experience?</string>
+    <string name="submit">Submit</string>
+    <string name="filter_add_review">Add review</string>
+
+    <string name="title_sign_in_error">Sign In Error</string>
+    <string name="message_no_network">No network connection.</string>
+    <string name="message_unknown">Unknown error.</string>
+    <string name="option_retry">Retry</string>
+    <string name="option_exit">Exit</string>
+    <string name="food_picture">food picture</string>
+    <string name="not_implemented">This feature is not implemented yet.</string>
+    <string name="pizza_guy">pizza guy</string>
+
 </resources>

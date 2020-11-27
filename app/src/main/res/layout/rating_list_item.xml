@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/ratingItemName"
+            style="@style/Theme.FriendlyEats.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:maxWidth="120dp"
+            android:maxLines="1"
+            android:textColor="@color/greySecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="John Doe" />
+
+        <TextView
+            android:id="@+id/ratingItemDivider"
+            style="@style/Theme.FriendlyEats.TextDivider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/ratingItemName"
+            android:text="@string/divider_bullet"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingItemName"
+            app:layout_constraintStart_toEndOf="@+id/ratingItemName"
+            app:layout_constraintTop_toTopOf="@+id/ratingItemName" />
+
+        <TextView
+            android:id="@+id/ratingItemDate"
+            style="@style/Theme.FriendlyEats.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_toStartOf="@+id/ratingItemRating"
+            android:layout_toEndOf="@+id/ratingItemDivider"
+            android:textColor="@color/greySecondary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/ratingItemName"
+            app:layout_constraintStart_toEndOf="@+id/ratingItemDivider"
+            tools:text="9/27/2017" />
+
+        <RatingBar
+            android:id="@+id/ratingItemRating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ratingItemText"
+            style="@style/Theme.FriendlyEats.Subheader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/greyPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingItemName"
+            tools:text="I thought it was pretty great! And I really have a ton to say wow." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

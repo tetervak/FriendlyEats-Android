@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Types of food I could think of in 5 minutes -->
+    <string-array name="categories">
+        <item>@string/value_any_category</item>
+
+        <item>Burgers</item>
+        <item>Indian</item>
+        <item>Italian</item>
+        <item>Mediterranean</item>
+        <item>Mexican</item>
+        <item>Pizza</item>
+    </string-array>
+
+    <!-- 6 most populous cities in Canada -->
+    <string-array name="cities">
+        <item>@string/value_any_city</item>
+
+        <item>Toronto, ON</item>
+        <item>Montreal, QC</item>
+        <item>Vancouver, BC</item>
+        <item>Calgary, AB</item>
+        <item>Edmonton, AB</item>
+        <item>Ottawa, ON</item>
+    </string-array>
+
+    <!-- Price filters -->
+    <string-array name="prices">
+        <item>@string/value_any_price</item>
+
+        <item>@string/price_1</item>
+        <item>@string/price_2</item>
+        <item>@string/price_3</item>
+    </string-array>
+
+    <!-- Ways you can sort restaurants -->
+    <string-array name="sort_by">
+        <item>@string/sort_by_rating</item>
+        <item>@string/sort_by_popularity</item>
+        <item>@string/sort_by_price</item>
+    </string-array>
+
+</resources>

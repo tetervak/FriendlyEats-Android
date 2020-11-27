@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- copy-pasted colors -->
+    <color name="greyPrimary">#DE000000</color>
+    <color name="greySecondary">#8B000000</color>
+    <color name="greyDisabled">#61000000</color>
+
 </resources>
