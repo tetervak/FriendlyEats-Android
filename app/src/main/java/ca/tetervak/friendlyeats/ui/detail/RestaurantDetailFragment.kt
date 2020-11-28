@@ -2,7 +2,6 @@ package ca.tetervak.friendlyeats.ui.detail
 
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +11,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import ca.tetervak.friendlyeats.R
 import ca.tetervak.friendlyeats.databinding.RestaurantDetailFragmentBinding
 import ca.tetervak.friendlyeats.model.Restaurant
-import ca.tetervak.friendlyeats.ui.list.RestaurantListAdapter
 import ca.tetervak.friendlyeats.util.RestaurantUtil
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
@@ -38,7 +35,7 @@ class RestaurantDetailFragment : Fragment(),
     private lateinit var binding: RestaurantDetailFragmentBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var restaurantRef: DocumentReference
-    private lateinit var ratingAdapter: RatingListAdapter
+    private lateinit var ratingAdapter: RatingListAdapterOld
 
     private var restaurantRegistration: ListenerRegistration? = null
 
@@ -70,7 +67,7 @@ class RestaurantDetailFragment : Fragment(),
             .limit(LIMIT.toLong())
 
         // RecyclerView
-        ratingAdapter = object: RatingListAdapter(ratingsQuery) {
+        ratingAdapter = object: RatingListAdapterOld(ratingsQuery) {
             override fun onDataChanged() {
                 if (itemCount == 0) {
                     binding.recyclerRatings.visibility = View.GONE

@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="ca.tetervak.friendlyeats.model.Restaurant"/>
+        <variable
+            name="restaurant"
+            type="Restaurant" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,6 +37,7 @@
             android:maxLines="1"
             app:layout_constraintStart_toEndOf="@+id/restaurantItemImage"
             app:layout_constraintTop_toTopOf="@+id/restaurantItemImage"
+            android:text="@{restaurant.name}"
             tools:text="Foo's Bar" />
 
         <RatingBar
@@ -71,6 +75,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/restaurantItemName"
             app:layout_constraintTop_toBottomOf="@+id/restaurantItemRating"
+            android:text="@{restaurant.category}"
             tools:text="Italian" />
 
         <TextView
@@ -91,6 +96,7 @@
             android:textColor="@color/greySecondary"
             app:layout_constraintStart_toEndOf="@+id/restaurantItemCityDivider"
             app:layout_constraintTop_toTopOf="@+id/restaurantItemCategory"
+            android:text="@{restaurant.city}"
             tools:text="San Francisco" />
 
         <TextView

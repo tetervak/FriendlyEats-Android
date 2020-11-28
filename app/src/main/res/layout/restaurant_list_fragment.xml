@@ -24,50 +24,5 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/restaurant_list_item" />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/viewEmpty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:constraint_referenced_ids="pizza_guy_image,no_results_message"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/pizza_guy_image"
-            style="@style/Theme.FriendlyEats.PizzaGuy"
-            android:src="@drawable/pizza_monster"
-            app:layout_constraintBottom_toTopOf="@+id/no_results_message"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            android:contentDescription="@string/pizza_guy" />
-
-        <TextView
-            android:id="@+id/no_results_message"
-            style="@style/Theme.FriendlyEats.Body1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/message_no_results"
-            android:textColor="@color/greyDisabled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pizza_guy_image" />
-
-        <ProgressBar
-            android:id="@+id/progressLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
