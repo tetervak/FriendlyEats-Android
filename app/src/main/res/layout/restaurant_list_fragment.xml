@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="ca.tetervak.friendlyeats.ui.list.RestaurantListViewModel"/>
+        <variable name="viewModel" type="RestaurantListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,6 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:listData="@{viewModel.restaurants}"
             tools:listitem="@layout/restaurant_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

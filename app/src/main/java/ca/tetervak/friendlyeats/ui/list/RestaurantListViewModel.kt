@@ -10,9 +10,7 @@ class RestaurantListViewModel @ViewModelInject constructor(
     private val repository: RestaurantRepository
 ): ViewModel() {
 
-    fun getAll(): LiveData<List<Restaurant>>{
-        return repository.getAll()
-    }
+    val restaurants: LiveData<List<Restaurant>> = repository.getAll()
 
     fun loadRandomData() {
         repository.loadRandomData()

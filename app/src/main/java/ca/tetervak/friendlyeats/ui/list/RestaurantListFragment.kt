@@ -10,13 +10,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.friendlyeats.R
 import ca.tetervak.friendlyeats.databinding.RestaurantListFragmentBinding
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RestaurantListFragment : Fragment(){
-
-    lateinit var firestore: FirebaseFirestore
 
     private lateinit var binding: RestaurantListFragmentBinding
     lateinit var navController: NavController
@@ -45,12 +42,10 @@ class RestaurantListFragment : Fragment(){
                 navController.navigate(action)
             }
         )
-
-        viewModel.getAll().observe(viewLifecycleOwner){ list ->
-            adapter.submitList(list)
-        }
-
         binding.recyclerRestaurants.adapter = adapter
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         return binding.root
     }
