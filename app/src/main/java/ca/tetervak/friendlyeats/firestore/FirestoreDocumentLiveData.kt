@@ -13,28 +13,32 @@ class FirestoreDocumentLiveData<T>(
 ) : LiveData<T>() {
 
     companion object {
-        private const val TAG = "FirestoreCollectionLiveData"
+        private const val TAG = "FirestoreDocumentLiveData"
     }
 
     private var registration: ListenerRegistration? = null
     private val listener = EventListener<DocumentSnapshot> { snapshot, error ->
 
         if (error != null) {
-            Log.d(TAG, "Listen Failed.")
+            Log.d(TAG, "Listen failed.")
         }
 
-        value = snapshot?.toObject(type)
+        if(snapshot == null) return@EventListener
+
+        value = snapshot.toObject(type)
     }
 
     override fun onActive() {
         super.onActive()
         // add listener
         registration = documentReference.addSnapshotListener(listener)
+        Log.d(TAG, "Added the listener.")
     }
 
     override fun onInactive() {
         super.onInactive()
         // remove listener
         registration?.remove()
+        Log.d(TAG, "Removed the listener.")
     }
 }
