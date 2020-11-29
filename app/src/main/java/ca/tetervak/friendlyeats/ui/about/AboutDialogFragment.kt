@@ -1,4 +1,4 @@
-package ca.tetervak.friendlyeats.ui.dialogs
+package ca.tetervak.friendlyeats.ui.about
 
 import android.app.Dialog
 import android.os.Bundle

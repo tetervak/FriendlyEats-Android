@@ -49,7 +49,8 @@ class RestaurantDetailFragment : Fragment() {
 
         binding.fabShowRatingDialog.setOnClickListener {
             navController.navigate(
-                RestaurantDetailFragmentDirections.actionDetailToRatingDialog())
+                RestaurantDetailFragmentDirections
+                        .actionDetailToAddRatingDialog(safeArgs.restaurantId))
         }
 
         return binding.root
