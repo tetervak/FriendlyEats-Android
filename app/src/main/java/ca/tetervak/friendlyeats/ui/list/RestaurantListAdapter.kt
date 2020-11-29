@@ -32,9 +32,9 @@ class RestaurantListAdapter(
             val resources = binding.root.resources
 
             // Load image
-            Glide.with(binding.restaurantItemImage.context)
-                    .load(restaurant.photo)
-                    .into(binding.restaurantItemImage)
+//            Glide.with(binding.restaurantItemImage.context)
+//                    .load(restaurant.photo)
+//                    .into(binding.restaurantItemImage)
 
             binding.restaurant = restaurant
             binding.restaurantItemRating.rating = restaurant.avgRating.toFloat()
