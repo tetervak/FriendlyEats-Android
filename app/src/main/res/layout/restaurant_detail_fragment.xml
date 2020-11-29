@@ -131,42 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
-            tools:listitem="@layout/rating_list_item"
-            tools:visibility="visible" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/viewEmptyRatings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:constraint_referenced_ids="imageView,textView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            style="@style/Theme.FriendlyEats.PizzaGuy"
-            android:src="@drawable/pizza_monster"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantImage"
-            app:layout_constraintVertical_chainStyle="packed"
-            android:contentDescription="@string/pizza_guy" />
-
-        <TextView
-            android:id="@+id/textView"
-            style="@style/Theme.FriendlyEats.Body1"
-            android:layout_width="189dp"
-            android:layout_height="11dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/message_no_reviews"
-            android:textColor="@color/greyDisabled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            tools:listitem="@layout/rating_list_item" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabShowRatingDialog"
