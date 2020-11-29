@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.friendlyeats.R
 import ca.tetervak.friendlyeats.databinding.RestaurantDetailFragmentBinding
 import ca.tetervak.friendlyeats.util.RestaurantUtil
-import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,13 +42,9 @@ class RestaurantDetailFragment : Fragment() {
         viewModel.restaurant.observe(viewLifecycleOwner){ restaurant ->
             binding.restaurant = restaurant
             binding.restaurantRating.rating = restaurant.avgRating.toFloat()
-            binding.restaurantNumRatings.text = getString(R.string.fmt_num_ratings, restaurant.numRatings)
+            binding.restaurantNumRatings.text =
+                    getString(R.string.fmt_num_ratings, restaurant.numRatings)
             binding.restaurantPrice.text = RestaurantUtil.getPriceString(restaurant)
-
-            // Background image
-            Glide.with(binding.restaurantImage.context)
-                    .load(restaurant.photo)
-                    .into(binding.restaurantImage)
         }
 
         binding.fabShowRatingDialog.setOnClickListener {

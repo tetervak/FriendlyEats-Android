@@ -8,7 +8,7 @@
         <variable name="viewModel" type="RestaurantListViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.list.RestaurantListFragment">
@@ -16,15 +16,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerRestaurants"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:background="@android:color/white"
             app:layoutManager="LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:listData="@{viewModel.restaurants}"
             tools:listitem="@layout/restaurant_list_item" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </layout>
