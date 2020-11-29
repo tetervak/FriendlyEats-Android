@@ -52,7 +52,8 @@
             android:textColor="@color/greySecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/ratingItemName"
             app:layout_constraintStart_toEndOf="@+id/ratingItemDivider"
-            tools:text="9/27/2017" />
+            app:date="@{rating.timestamp}"
+            tools:text="Sep 27, 2020" />
 
         <RatingBar
             android:id="@+id/ratingItemRating"

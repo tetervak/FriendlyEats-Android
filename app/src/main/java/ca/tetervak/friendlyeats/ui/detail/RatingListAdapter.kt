@@ -35,10 +35,6 @@ class RatingListAdapter(
             binding.rating = rating
             binding.ratingItemRating.rating = rating.rating.toFloat()
 
-            if (rating.timestamp != null) {
-                binding.ratingItemDate.text = FORMAT.format(rating.timestamp!!)
-            }
-
             binding.executePendingBindings()
         }
 
