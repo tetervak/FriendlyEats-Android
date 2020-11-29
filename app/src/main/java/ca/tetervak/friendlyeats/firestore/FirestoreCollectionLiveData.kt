@@ -24,9 +24,7 @@ class FirestoreCollectionLiveData<T>(
         }
 
         val list = ArrayList<T>()
-        snapshot?.forEach { doc ->
-            list.add(doc.toObject(type))
-        }
+        snapshot?.forEach { doc -> list.add(doc.toObject(type)) }
 
         value = list
     }
