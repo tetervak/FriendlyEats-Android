@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="ca.tetervak.friendlyeats.model.Restaurant"/>
+        <variable name="restaurant" type="Restaurant" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +16,7 @@
         <ImageView
             android:id="@+id/restaurantImage"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:alpha="1.0"
             android:contentDescription="@string/food_picture"
             android:scaleType="centerCrop"
@@ -26,7 +27,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:background="@drawable/gradient_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +44,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/restaurantRating"
             app:layout_constraintStart_toStartOf="parent"
+            android:text="@{restaurant.name}"
             tools:text="Some Restaurant" />
 
         <RatingBar
@@ -78,6 +80,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="@+id/restaurantImage"
             app:layout_constraintStart_toStartOf="parent"
+            android:text="@{restaurant.category}"
             tools:text="Italian" />
 
         <TextView
@@ -99,6 +102,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintBaseline_toBaselineOf="@+id/restaurantCategory"
             app:layout_constraintStart_toEndOf="@+id/restaurantCity_divider"
+            android:text="@{restaurant.city}"
             tools:text="San Francisco" />
 
         <TextView

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="ca.tetervak.friendlyeats.model.Rating"/>
+        <variable name="rating" type="Rating" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +26,7 @@
             android:textColor="@color/greySecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{rating.userName}"
             tools:text="John Doe" />
 
         <TextView
@@ -77,6 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ratingItemName"
+            android:text="@{rating.text}"
             tools:text="I thought it was pretty great! And I really have a ton to say wow." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

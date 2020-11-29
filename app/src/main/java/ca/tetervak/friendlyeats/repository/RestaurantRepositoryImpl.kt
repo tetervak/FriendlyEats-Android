@@ -3,6 +3,8 @@ package ca.tetervak.friendlyeats.repository
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
+import ca.tetervak.friendlyeats.firestore.FirestoreCollectionLiveData
+import ca.tetervak.friendlyeats.firestore.FirestoreDocumentLiveData
 import ca.tetervak.friendlyeats.model.Restaurant
 import ca.tetervak.friendlyeats.util.RatingUtil
 import ca.tetervak.friendlyeats.util.RestaurantUtil
@@ -22,44 +24,16 @@ class RestaurantRepositoryImpl @Inject constructor(
     }
 
     private val firestore = Firebase.firestore
-
-    private val query = firestore.collection("restaurants")
-            .orderBy("avgRating", Query.Direction.DESCENDING)
+    private val collection = firestore.collection("restaurants")
+    private val query = collection.orderBy("avgRating", Query.Direction.DESCENDING)
             .limit(LIMIT.toLong())
 
     override fun getAll(): LiveData<List<Restaurant>> {
-        return restaurantLiveData
+        return FirestoreCollectionLiveData(query, Restaurant::class.java)
     }
 
-    private val restaurantLiveData = object : LiveData<List<Restaurant>>() {
-
-        private var registration: ListenerRegistration? = null
-        private val listener = EventListener<QuerySnapshot> { data, error ->
-
-            if (error != null) {
-                Log.d(TAG, "Listen Failed.")
-            }
-
-            val list = ArrayList<Restaurant>()
-            data?.forEach { doc ->
-                list.add(doc.toObject())
-            }
-
-            value = list
-        }
-
-        override fun onActive() {
-            super.onActive()
-            // add listener
-            registration = query.addSnapshotListener(listener)
-        }
-
-        override fun onInactive() {
-            super.onInactive()
-            // remove listener
-            registration?.remove()
-        }
-
+    override fun get(id: String): LiveData<Restaurant> {
+        return FirestoreDocumentLiveData(collection.document(id), Restaurant::class.java)
     }
 
     override fun loadRandomData() {

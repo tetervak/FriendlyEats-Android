@@ -10,6 +10,10 @@ import dagger.hilt.android.components.ApplicationComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindRestaurantDataRepository(
+    abstract fun bindRestaurantRepository(
         repository: RestaurantRepositoryImpl): RestaurantRepository
+
+    @Binds
+    abstract fun bindRatingRepository(
+            repository: RatingRepositoryImpl): RatingRepository
 }

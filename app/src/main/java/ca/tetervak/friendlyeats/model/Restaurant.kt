@@ -8,7 +8,6 @@ import com.google.firebase.firestore.IgnoreExtraProperties
  */
 @IgnoreExtraProperties
 data class Restaurant(
-
     var name: String? = null,
     var city: String? = null,
     var category: String? = null,
@@ -16,9 +15,7 @@ data class Restaurant(
     var price: Int = 0,
     var numRatings: Int = 0,
     var avgRating: Double = 0.toDouble(),
-
-    @DocumentId
-    var id: String? = null
+    @DocumentId var id: String? = null
 ) {
 
     companion object {
