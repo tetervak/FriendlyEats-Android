@@ -1,8 +1,7 @@
 package ca.tetervak.friendlyeats.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import ca.tetervak.friendlyeats.firestore.FirestoreCollectionLiveData
+import ca.tetervak.friendlyeats.firestore.FirestoreRepository
 import ca.tetervak.friendlyeats.model.Rating
 import ca.tetervak.friendlyeats.model.Restaurant
 import com.google.firebase.auth.ktx.auth
@@ -10,6 +9,8 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -20,17 +21,20 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
         private const val LIMIT = 50
     }
 
+    private val firestoreRepository =
+        FirestoreRepository(Rating::class.java)
+
     private val firestore = Firebase.firestore
     private val collection = firestore.collection("restaurants")
 
-    override fun getAll(restaurantId: String): LiveData<List<Rating>> {
-
+    @ExperimentalCoroutinesApi
+    override fun getAll(restaurantId: String): Flow<List<Rating>> {
         val query = collection.document(restaurantId)
-                .collection("ratings")
-                .orderBy("timestamp", Query.Direction.DESCENDING)
-                .limit(LIMIT.toLong())
+            .collection("ratings")
+            .orderBy("timestamp", Query.Direction.DESCENDING)
+            .limit(LIMIT.toLong())
 
-        return FirestoreCollectionLiveData(query, Rating::class.java)
+         return firestoreRepository.getAllFromQuery(query)
     }
 
     // insert own rating for the restaurant

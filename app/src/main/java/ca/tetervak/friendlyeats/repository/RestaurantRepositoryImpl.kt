@@ -2,16 +2,14 @@ package ca.tetervak.friendlyeats.repository
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import ca.tetervak.friendlyeats.firestore.FirestoreCollectionLiveData
-import ca.tetervak.friendlyeats.firestore.FirestoreDocumentLiveData
+import ca.tetervak.friendlyeats.firestore.FirestoreRepository
 import ca.tetervak.friendlyeats.model.Restaurant
 import ca.tetervak.friendlyeats.util.RatingUtil
 import ca.tetervak.friendlyeats.util.RestaurantUtil
-import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
@@ -23,17 +21,22 @@ class RestaurantRepositoryImpl @Inject constructor(
         private const val LIMIT = 50
     }
 
+    private val firestoreRepository =
+        FirestoreRepository(Restaurant::class.java)
+
     private val firestore = Firebase.firestore
     private val collection = firestore.collection("restaurants")
-    private val query = collection.orderBy("avgRating", Query.Direction.DESCENDING)
-            .limit(LIMIT.toLong())
+//    private val query = collection.orderBy("avgRating", Query.Direction.DESCENDING)
+//            .limit(LIMIT.toLong())
 
-    override fun getAll(): LiveData<List<Restaurant>> {
-        return FirestoreCollectionLiveData(query, Restaurant::class.java)
+    @ExperimentalCoroutinesApi
+    override fun getAll(): Flow<List<Restaurant>> {
+        return firestoreRepository.getAllFromCollection(collection)
     }
 
-    override fun get(id: String): LiveData<Restaurant> {
-        return FirestoreDocumentLiveData(collection.document(id), Restaurant::class.java)
+    @ExperimentalCoroutinesApi
+    override fun get(id: String): Flow<Restaurant> {
+        return firestoreRepository.getDocument(collection.document(id))
     }
 
     override fun loadRandomData() {

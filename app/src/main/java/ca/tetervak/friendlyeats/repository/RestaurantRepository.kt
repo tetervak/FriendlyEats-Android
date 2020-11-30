@@ -1,10 +1,10 @@
 package ca.tetervak.friendlyeats.repository
 
-import androidx.lifecycle.LiveData
 import ca.tetervak.friendlyeats.model.Restaurant
+import kotlinx.coroutines.flow.Flow
 
 interface RestaurantRepository {
-    fun getAll(): LiveData<List<Restaurant>>
-    fun get(id: String): LiveData<Restaurant>
+    fun getAll(): Flow<List<Restaurant>>
+    fun get(id: String): Flow<Restaurant>
     fun loadRandomData()
 }

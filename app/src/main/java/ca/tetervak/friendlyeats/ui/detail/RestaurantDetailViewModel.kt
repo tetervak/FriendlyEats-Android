@@ -15,10 +15,10 @@ class RestaurantDetailViewModel @ViewModelInject constructor(
     private val restaurantId = MutableLiveData<String>()
 
     val restaurant: LiveData<Restaurant> =
-            restaurantId.switchMap{ restaurantRepository.get(it) }
+            restaurantId.switchMap{ restaurantRepository.get(it).asLiveData() }
 
     val ratings: LiveData<List<Rating>> =
-            restaurantId.switchMap{ ratingRepository.getAll(it) }
+            restaurantId.switchMap{ ratingRepository.getAll(it).asLiveData() }
 
     fun loadData(id: String){
         restaurantId.value = id
