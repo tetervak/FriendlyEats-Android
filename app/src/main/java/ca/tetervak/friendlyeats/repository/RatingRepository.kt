@@ -1,7 +1,6 @@
 package ca.tetervak.friendlyeats.repository
 
-import androidx.lifecycle.LiveData
-import ca.tetervak.friendlyeats.model.Rating
+import ca.tetervak.friendlyeats.domain.Rating
 import kotlinx.coroutines.flow.Flow
 
 interface RatingRepository {

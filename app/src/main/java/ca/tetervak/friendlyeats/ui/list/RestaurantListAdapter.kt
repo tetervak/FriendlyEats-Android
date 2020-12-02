@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.friendlyeats.R
 import ca.tetervak.friendlyeats.databinding.RestaurantListItemBinding
-import ca.tetervak.friendlyeats.model.Restaurant
+import ca.tetervak.friendlyeats.domain.Restaurant
 import ca.tetervak.friendlyeats.util.RestaurantUtil
-import com.bumptech.glide.Glide
 
 class RestaurantListAdapter(
         private val onClick: (Restaurant) -> Unit

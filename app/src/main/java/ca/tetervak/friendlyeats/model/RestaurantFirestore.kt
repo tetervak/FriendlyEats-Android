@@ -7,7 +7,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties
  * Restaurant POJO.
  */
 @IgnoreExtraProperties
-data class Restaurant(
+data class RestaurantFirestore(
     var name: String? = null,
     var city: String? = null,
     var category: String? = null,
@@ -16,14 +16,4 @@ data class Restaurant(
     var numRatings: Int = 0,
     var avgRating: Double = 0.toDouble(),
     @DocumentId var id: String? = null
-) {
-
-    companion object {
-
-        const val FIELD_CITY = "city"
-        const val FIELD_CATEGORY = "category"
-        const val FIELD_PRICE = "price"
-        const val FIELD_POPULARITY = "numRatings"
-        const val FIELD_AVG_RATING = "avgRating"
-    }
-}
+)

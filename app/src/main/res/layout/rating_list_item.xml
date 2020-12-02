@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ca.tetervak.friendlyeats.model.Rating"/>
+        <import type="ca.tetervak.friendlyeats.domain.Rating"/>
         <variable name="rating" type="Rating" />
     </data>
 

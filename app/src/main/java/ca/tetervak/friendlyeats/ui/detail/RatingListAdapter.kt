@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.friendlyeats.databinding.RatingListItemBinding
-import ca.tetervak.friendlyeats.model.Rating
+import ca.tetervak.friendlyeats.domain.Rating
 import java.text.SimpleDateFormat
 import java.util.*
 

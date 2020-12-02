@@ -1,6 +1,6 @@
 package ca.tetervak.friendlyeats.util
 
-import ca.tetervak.friendlyeats.model.Rating
+import ca.tetervak.friendlyeats.model.RatingFirestore
 import java.util.ArrayList
 import java.util.Random
 import java.util.UUID
@@ -29,9 +29,9 @@ object RatingUtil {
     /**
      * Create a random Rating POJO.
      */
-    private val random: Rating
+    private val random: RatingFirestore
         get() {
-            val rating = Rating()
+            val rating = RatingFirestore()
 
             val random = Random()
 
@@ -49,8 +49,8 @@ object RatingUtil {
     /**
      * Get a list of random Rating POJOs.
      */
-    fun getRandomList(length: Int): List<Rating> {
-        val result = ArrayList<Rating>()
+    fun getRandomList(length: Int): List<RatingFirestore> {
+        val result = ArrayList<RatingFirestore>()
 
         for (i in 0 until length) {
             result.add(random)
@@ -62,7 +62,7 @@ object RatingUtil {
     /**
      * Get the average rating of a List.
      */
-    fun getAverageRating(ratings: List<Rating>): Double {
+    fun getAverageRating(ratings: List<RatingFirestore>): Double {
         var sum = 0.0
 
         for (rating in ratings) {

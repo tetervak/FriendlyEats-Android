@@ -2,7 +2,7 @@ package ca.tetervak.friendlyeats.ui.add
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import ca.tetervak.friendlyeats.model.Restaurant
+import ca.tetervak.friendlyeats.domain.Restaurant
 import ca.tetervak.friendlyeats.repository.RatingRepository
 import ca.tetervak.friendlyeats.repository.RestaurantRepository
 import kotlinx.coroutines.Dispatchers

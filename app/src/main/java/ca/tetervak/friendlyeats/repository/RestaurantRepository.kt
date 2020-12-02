@@ -1,6 +1,6 @@
 package ca.tetervak.friendlyeats.repository
 
-import ca.tetervak.friendlyeats.model.Restaurant
+import ca.tetervak.friendlyeats.domain.Restaurant
 import kotlinx.coroutines.flow.Flow
 
 interface RestaurantRepository {

@@ -2,7 +2,7 @@ package ca.tetervak.friendlyeats.util
 
 import android.content.Context
 import ca.tetervak.friendlyeats.R
-import ca.tetervak.friendlyeats.model.Restaurant
+import ca.tetervak.friendlyeats.domain.Restaurant
 import java.util.Locale
 import java.util.Random
 

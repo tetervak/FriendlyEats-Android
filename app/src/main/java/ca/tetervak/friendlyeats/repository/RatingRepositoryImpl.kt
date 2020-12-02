@@ -1,9 +1,10 @@
 package ca.tetervak.friendlyeats.repository
 
 import android.util.Log
+import ca.tetervak.friendlyeats.domain.Rating
 import ca.tetervak.friendlyeats.firestore.FirestoreRepository
-import ca.tetervak.friendlyeats.model.Rating
-import ca.tetervak.friendlyeats.model.Restaurant
+import ca.tetervak.friendlyeats.model.RatingFirestore
+import ca.tetervak.friendlyeats.model.RestaurantFirestore
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
@@ -11,6 +12,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -21,8 +23,8 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
         private const val LIMIT = 50
     }
 
-    private val firestoreRepository =
-        FirestoreRepository(Rating::class.java)
+    private val firestoreRatingRepository =
+        FirestoreRepository(RatingFirestore::class.java)
 
     private val firestore = Firebase.firestore
     private val collection = firestore.collection("restaurants")
@@ -34,7 +36,9 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
             .orderBy("timestamp", Query.Direction.DESCENDING)
             .limit(LIMIT.toLong())
 
-         return firestoreRepository.getAllFromQuery(query)
+         return firestoreRatingRepository.getAllFromQuery(query).map { list ->
+             list.map { it.asRating() }
+         }
     }
 
     // insert own rating for the restaurant
@@ -55,8 +59,8 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
 
         try {
             // get the restaurant object
-            val restaurant: Restaurant? =
-                    restaurantRef.get().await()?.toObject<Restaurant>()
+            val restaurant: RestaurantFirestore? =
+                    restaurantRef.get().await()?.toObject<RestaurantFirestore>()
             if (restaurant == null) {
                 Log.d(TAG, "insert: the restaurant is not found")
                 return
@@ -75,7 +79,7 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
 
             // Set new restaurant info
 
-            val rating = Rating(
+            val rating = RatingFirestore(
                     userId = user.uid,
                     userName =
                     if (user.displayName?.isEmpty() == true) {
@@ -104,4 +108,8 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
             Log.d(TAG, "insert: ${e.message}")
         }
     }
+}
+
+fun RatingFirestore.asRating(): Rating {
+    return Rating(userId, userName, rating, text, timestamp, id)
 }

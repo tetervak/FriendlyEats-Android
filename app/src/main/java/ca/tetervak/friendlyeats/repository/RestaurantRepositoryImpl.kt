@@ -2,14 +2,16 @@ package ca.tetervak.friendlyeats.repository
 
 import android.app.Application
 import android.util.Log
+import ca.tetervak.friendlyeats.domain.Restaurant
 import ca.tetervak.friendlyeats.firestore.FirestoreRepository
-import ca.tetervak.friendlyeats.model.Restaurant
+import ca.tetervak.friendlyeats.model.RestaurantFirestore
 import ca.tetervak.friendlyeats.util.RatingUtil
 import ca.tetervak.friendlyeats.util.RestaurantUtil
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
@@ -21,8 +23,8 @@ class RestaurantRepositoryImpl @Inject constructor(
         private const val LIMIT = 50
     }
 
-    private val firestoreRepository =
-        FirestoreRepository(Restaurant::class.java)
+    private val firestoreRestaurantRepository =
+        FirestoreRepository(RestaurantFirestore::class.java)
 
     private val firestore = Firebase.firestore
     private val collection = firestore.collection("restaurants")
@@ -31,12 +33,16 @@ class RestaurantRepositoryImpl @Inject constructor(
 
     @ExperimentalCoroutinesApi
     override fun getAll(): Flow<List<Restaurant>> {
-        return firestoreRepository.getAllFromCollection(collection)
+        return firestoreRestaurantRepository.getAllFromCollection(collection).map { list ->
+            list.map { it.asRestaurant() }
+        }
     }
 
     @ExperimentalCoroutinesApi
     override fun get(id: String): Flow<Restaurant> {
-        return firestoreRepository.getDocument(collection.document(id))
+        return firestoreRestaurantRepository
+            .getDocument(collection.document(id))
+            .map{ it.asRestaurant() }
     }
 
     override fun loadRandomData() {
@@ -67,4 +73,8 @@ class RestaurantRepositoryImpl @Inject constructor(
             }
         }
     }
+}
+
+fun RestaurantFirestore.asRestaurant(): Restaurant{
+    return Restaurant(name, city, category, photo, price, numRatings, avgRating, id)
 }
