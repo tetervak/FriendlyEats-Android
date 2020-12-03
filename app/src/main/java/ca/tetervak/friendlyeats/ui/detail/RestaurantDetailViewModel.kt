@@ -4,8 +4,6 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import ca.tetervak.friendlyeats.domain.Rating
 import ca.tetervak.friendlyeats.domain.Restaurant
-import ca.tetervak.friendlyeats.model.RatingFirestore
-import ca.tetervak.friendlyeats.model.RestaurantFirestore
 import ca.tetervak.friendlyeats.repository.RatingRepository
 import ca.tetervak.friendlyeats.repository.RestaurantRepository
 

@@ -3,10 +3,10 @@ package ca.tetervak.friendlyeats.repository
 import android.util.Log
 import ca.tetervak.friendlyeats.domain.Rating
 import ca.tetervak.friendlyeats.firestore.FirestoreRepository
-import ca.tetervak.friendlyeats.model.RatingFirestore
-import ca.tetervak.friendlyeats.model.RestaurantFirestore
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ServerTimestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -14,9 +14,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
+import java.util.*
 import javax.inject.Inject
 
-class RatingRepositoryImpl @Inject constructor() : RatingRepository {
+import ca.tetervak.friendlyeats.repository.RestaurantRepositoryFirestore.RestaurantFirestore
+
+class RatingRepositoryFirestore @Inject constructor() : RatingRepository {
 
     companion object {
         private const val TAG = "RatingRepositoryImpl"
@@ -25,8 +28,8 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
 
     private val firestoreRatingRepository =
         FirestoreRepository(RatingFirestore::class.java)
-
     private val firestore = Firebase.firestore
+
     private val collection = firestore.collection("restaurants")
 
     @ExperimentalCoroutinesApi
@@ -40,12 +43,11 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
              list.map { it.asRating() }
          }
     }
-
     // insert own rating for the restaurant
     override suspend fun insert(
-            restaurantId: String,
-            ratingValue: Double,
-            comments: String
+        restaurantId: String,
+        score: Double,
+        comments: String
     ) {
 
         val user = Firebase.auth.currentUser
@@ -71,7 +73,7 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
 
             // Compute new average rating
             val oldRatingTotal = restaurant.avgRating * restaurant.numRatings
-            val newAvgRating = (oldRatingTotal + ratingValue) / newNumRatings
+            val newAvgRating = (oldRatingTotal + score) / newNumRatings
 
             // Set new restaurant info
             restaurant.numRatings = newNumRatings
@@ -87,7 +89,7 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
                     } else {
                         user.displayName
                     },
-                    rating = ratingValue,
+                    rating = score,
                     text = comments
             )
 
@@ -108,8 +110,17 @@ class RatingRepositoryImpl @Inject constructor() : RatingRepository {
             Log.d(TAG, "insert: ${e.message}")
         }
     }
-}
 
-fun RatingFirestore.asRating(): Rating {
-    return Rating(userId, userName, rating, text, timestamp, id)
+    data class RatingFirestore(
+        var userId: String? = null,
+        var userName: String? = null,
+        var rating: Double = 0.toDouble(),
+        var text: String? = null,
+        @ServerTimestamp var timestamp: Date? = null,
+        @DocumentId var id: String? = null
+    ){
+        fun asRating(): Rating{
+            return Rating(userId, userName, rating, text, timestamp, id)
+        }
+    }
 }

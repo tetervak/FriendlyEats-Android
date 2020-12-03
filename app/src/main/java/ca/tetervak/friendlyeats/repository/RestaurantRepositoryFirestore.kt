@@ -4,9 +4,10 @@ import android.app.Application
 import android.util.Log
 import ca.tetervak.friendlyeats.domain.Restaurant
 import ca.tetervak.friendlyeats.firestore.FirestoreRepository
-import ca.tetervak.friendlyeats.model.RestaurantFirestore
 import ca.tetervak.friendlyeats.util.RatingUtil
 import ca.tetervak.friendlyeats.util.RestaurantUtil
+import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -14,7 +15,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class RestaurantRepositoryImpl @Inject constructor(
+class RestaurantRepositoryFirestore @Inject constructor(
         private val application: Application
 ) : RestaurantRepository {
 
@@ -73,8 +74,25 @@ class RestaurantRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    /**
+     * Restaurant POJO.
+     */
+    @IgnoreExtraProperties
+    data class RestaurantFirestore(
+        var name: String? = null,
+        var city: String? = null,
+        var category: String? = null,
+        var photo: String? = null,
+        var price: Int = 0,
+        var numRatings: Int = 0,
+        var avgRating: Double = 0.toDouble(),
+        @DocumentId var id: String? = null
+    ){
+        fun asRestaurant(): Restaurant{
+            return Restaurant(name, city, category, photo, price, numRatings, avgRating, id)
+        }
+    }
 }
 
-fun RestaurantFirestore.asRestaurant(): Restaurant{
-    return Restaurant(name, city, category, photo, price, numRatings, avgRating, id)
-}
+

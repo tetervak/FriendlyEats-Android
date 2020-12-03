@@ -23,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{restaurant.photo}"
+            app:imageUrl="@{restaurant.imageUri}"
             tools:src="@drawable/food_1" />
 
         <View

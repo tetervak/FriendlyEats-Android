@@ -5,9 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface RatingRepository {
     fun getAll(restaurantId: String): Flow<List<Rating>>
-    suspend fun insert(
-        restaurantId: String,
-        ratingValue: Double,
-        comments: String
-    )
+    suspend fun insert(restaurantId: String, score: Double, comments: String)
 }

@@ -33,7 +33,7 @@ class RatingListAdapter(
         fun bind(rating: Rating) {
 
             binding.rating = rating
-            binding.ratingItemRating.rating = rating.rating.toFloat()
+            binding.ratingItemRating.rating = rating.score.toFloat()
 
             binding.executePendingBindings()
         }

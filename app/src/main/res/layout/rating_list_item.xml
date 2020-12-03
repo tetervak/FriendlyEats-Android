@@ -52,7 +52,7 @@
             android:textColor="@color/greySecondary"
             app:layout_constraintBaseline_toBaselineOf="@+id/ratingItemName"
             app:layout_constraintStart_toEndOf="@+id/ratingItemDivider"
-            app:date="@{rating.timestamp}"
+            app:date="@{rating.date}"
             tools:text="Sep 27, 2020" />
 
         <RatingBar
@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ratingItemName"
-            android:text="@{rating.text}"
+            android:text="@{rating.comments}"
             tools:text="I thought it was pretty great! And I really have a ton to say wow." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

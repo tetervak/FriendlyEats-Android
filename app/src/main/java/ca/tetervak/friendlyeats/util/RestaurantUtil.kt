@@ -40,7 +40,7 @@ object RestaurantUtil {
         restaurant.name = getRandomName(random)
         restaurant.city = getRandomString(cities, random)
         restaurant.category = getRandomString(categories, random)
-        restaurant.photo = getRandomImageUrl(random)
+        restaurant.imageUri = getRandomImageUrl(random)
         restaurant.price = getRandomInt(prices, random)
         restaurant.numRatings = random.nextInt(20)
 
@@ -69,7 +69,7 @@ object RestaurantUtil {
     /**
      * Get price represented as dollar signs.
      */
-    fun getPriceString(priceInt: Int): String {
+    private fun getPriceString(priceInt: Int): String {
         return when (priceInt) {
             1 -> "$"
             2 -> "$$"

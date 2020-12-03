@@ -11,9 +11,9 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindRestaurantRepository(
-        repository: RestaurantRepositoryImpl): RestaurantRepository
+        repository: RestaurantRepositoryFirestore): RestaurantRepository
 
     @Binds
     abstract fun bindRatingRepository(
-            repository: RatingRepositoryImpl): RatingRepository
+            repository: RatingRepositoryFirestore): RatingRepository
 }

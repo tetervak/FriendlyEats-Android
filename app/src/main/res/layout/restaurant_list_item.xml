@@ -23,7 +23,7 @@
             android:background="#757575"
             android:contentDescription="@string/food_picture"
             android:scaleType="centerCrop"
-            app:imageUrl="@{restaurant.photo}"
+            app:imageUrl="@{restaurant.imageUri}"
             tools:src="@drawable/food_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
